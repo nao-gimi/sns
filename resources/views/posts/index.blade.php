@@ -1,6 +1,19 @@
 @extends('layouts.login')
 
 @section('content')
-<h2>機能を実装していきましょう。</h2>
+<form action="/postcreat" method="post">
+  @csrf
+  <input type="text" name="post">
+  <input type="image" src="/images/post.png" alt="送信する">
+</form>
+
+@foreach($tweets as $tweet)
+<ul>
+  <li><img src="/images/{{ $tweet->images }}"></li>
+  <li>{{ $tweet->username }}</li>
+  <li>{{ $tweet->posts }}</li>
+  <li>{{ $tweet->created_at }}</li>
+</ul>
+@endforeach
 
 @endsection
