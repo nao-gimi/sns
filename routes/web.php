@@ -41,3 +41,5 @@ Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
 Route::delete('/delete/{id}', 'PostsController@delete');
+
+Route::post('/update/{update}', 'PostsController@update');

@@ -38,4 +38,14 @@ class PostsController extends Controller
 
         return redirect('/top');
     }
+
+    public function update(Request $request, $id){
+        $uppost = $request->input('update');
+
+        DB::table('posts')
+        ->where('id', $id)
+        ->update(['posts' => $uppost]);
+
+        return redirect('/top');
+    }
 }
