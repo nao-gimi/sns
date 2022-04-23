@@ -15,7 +15,7 @@
   <li>{{ $tweet->created_at }}</li>
 
     <div style="text-align:right">
-    <img src="/images/edit.png" class="modalopen" data-target="{{ $tweet->id }}">
+    <img src="/images/edit.png" width="30px" height="30px" class="modalopen" data-target="{{ $tweet->id }}">
       <form action="/delete/{{ $tweet->id }}" method="post">
         @csrf
         @method('DELETE')
