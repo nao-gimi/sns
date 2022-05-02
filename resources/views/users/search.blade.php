@@ -11,8 +11,11 @@
 <ul>
   <li><img src="/images/{{ $userlist->images }}"></li>
   <li>{{ $userlist->username }}</li>
-  <li><a href="">フォローをする</a></li>
-  <li><a href="">フォローを外す</a></li>
+  @if(!in_array($userlist->id, array_column($followlist, 'follow')))
+  <li><a href="/follow/{{ $userlist->id }}">フォローをする</a></li>
+  @else
+  <li><a href="/unfollow/{{ $userlist->id }}">フォローを外す</a></li>
+  @endif
 </ul>
 @endforeach
 

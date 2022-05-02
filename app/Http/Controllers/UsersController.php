@@ -16,6 +16,11 @@ class UsersController extends Controller
     public function search(Request $request){
         $search = $request->input('search');
 
+        $followlist = DB::table('follows')
+            ->where('follower', Auth::id())
+            ->get()
+            ->toArray();
+
         if(isset($search)) {
             $userlists = DB::table('users')
                 ->where('username', 'like', '%'.$search.'%')
@@ -27,6 +32,22 @@ class UsersController extends Controller
                 ->get();
         }
 
-        return view('users.search', ['userlists'=>$userlists]);
+        $followerlist = DB::table('follows')
+            ->where('follow', Auth::id())
+            ->get()
+            ->toArray();
+
+        if(isset($search)) {
+            $userlists = DB::table('users')
+                ->where('username', 'like', '%'.$search.'%')
+                ->where('id', '<>', Auth::id())
+                ->get();
+        } else {
+            $userlists = DB::table('users')
+                ->where('id', '<>', Auth::id())
+                ->get();
+        }
+
+        return view('users.search', ['userlists'=>$userlists, 'followlist'=>$followlist, 'followerlist'=>$followerlist]);
     }
 }

@@ -38,11 +38,14 @@ Route::get('/profile','UsersController@profile');
 Route::get('/search','UsersController@search');
 Route::post('/search','UsersController@search');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
-
 Route::delete('/delete/{id}', 'PostsController@delete');
 
 Route::post('/update/{update}', 'PostsController@update');
 
 Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/follow/{follow}', 'FollowsController@follow');
+Route::get('/unfollow/{unfollow}', 'FollowsController@unfollow');
+
+Route::get('/followlist', 'FollowsController@followlist');
+Route::get('/followerlist', 'FollowsController@followerlist');
