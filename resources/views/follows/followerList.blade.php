@@ -2,7 +2,7 @@
 
 @section('content')
 @foreach($followerlist as $followerlist)
-<a herf=""><img src="/images/{{ $followerlist->images }}"></a>
+<a href="/other/{{ $followerlist->id }}"><img src="/images/{{ $followerlist->images }}"></a>
 @endforeach
 @foreach($followerpost as $followerpost)
 <ul>

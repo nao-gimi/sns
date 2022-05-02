@@ -49,3 +49,5 @@ Route::get('/unfollow/{unfollow}', 'FollowsController@unfollow');
 
 Route::get('/followlist', 'FollowsController@followlist');
 Route::get('/followerlist', 'FollowsController@followerlist');
+
+Route::get('/other/{other}', 'UsersController@other');
