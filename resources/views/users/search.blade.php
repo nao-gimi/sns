@@ -6,6 +6,9 @@
   <input type="text" name="search" placeholder="ユーザー検索">
   <input type="submit" value="検索">
 </form>
+@if(isset($search))
+<p>検索ワード：{{ $search }}</p>
+@endif
 
 @foreach($userlists as $userlist)
 <ul>

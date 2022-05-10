@@ -32,7 +32,7 @@ class UsersController extends Controller
                 ->get();
         }
 
-        return view('users.search', ['userlists'=>$userlists, 'followlist'=>$followlist]);
+        return view('users.search', ['userlists'=>$userlists, 'followlist'=>$followlist, 'search'=>$search]);
     }
     public function other($other){
         $otherprofile = DB::table('users')
@@ -52,5 +52,14 @@ class UsersController extends Controller
             ->get();
 
         return view('users.otherprofile', ['otherprofile'=>$otherprofile, 'otherposts'=>$otherposts, 'followlist'=>$followlist]);
+    }
+
+    public function myprofile(Request $request){
+        $username = $request->input('username');
+        $mail = $request->input('mail');
+        $newpassword = $request->input('newpassword');
+        $bio = $request->input('bio');
+        $icon = $request->file('icon');
+        ddd($icon);
     }
 }
